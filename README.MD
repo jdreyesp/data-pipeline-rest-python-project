@@ -1,0 +1,1 @@
+## Sample POC for [data pipeline](./data-pipeline/README.MD) and [REST service](./data-pipeline/README.MD) in Python

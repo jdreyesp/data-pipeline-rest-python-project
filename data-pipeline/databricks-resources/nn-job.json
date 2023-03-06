@@ -1,0 +1,59 @@
+{
+  "job_id": 565671085025364,
+  "creator_user_name": "jdiego.reyes@gmail.com",
+  "run_as_user_name": "jdiego.reyes@gmail.com",
+  "run_as_owner": true,
+  "settings": {
+    "name": "pipeline",
+    "email_notifications": {
+      "no_alert_for_skipped_runs": false
+    },
+    "webhook_notifications": {},
+    "timeout_seconds": 0,
+    "max_concurrent_runs": 1,
+    "tasks": [
+      {
+        "task_key": "mount_adls",
+        "notebook_task": {
+          "notebook_path": "/Users/jdiego.reyes@gmail.com/project/framework/mount-adls",
+          "source": "WORKSPACE"
+        },
+        "existing_cluster_id": "0216-150918-xhj54gfh",
+        "timeout_seconds": 0,
+        "email_notifications": {}
+      },
+      {
+        "task_key": "source_to_raw",
+        "depends_on": [
+          {
+            "task_key": "mount_adls"
+          }
+        ],
+        "notebook_task": {
+          "notebook_path": "/Users/jdiego.reyes@gmail.com/project/framework/source-to-raw",
+          "source": "WORKSPACE"
+        },
+        "existing_cluster_id": "0216-150918-xhj54gfh",
+        "timeout_seconds": 0,
+        "email_notifications": {}
+      },
+      {
+        "task_key": "raw-to-data-hub",
+        "depends_on": [
+          {
+            "task_key": "source_to_raw"
+          }
+        ],
+        "notebook_task": {
+          "notebook_path": "/Users/jdiego.reyes@gmail.com/project/framework/raw-to-datahub",
+          "source": "WORKSPACE"
+        },
+        "existing_cluster_id": "0216-150918-xhj54gfh",
+        "timeout_seconds": 0,
+        "email_notifications": {}
+      }
+    ],
+    "format": "MULTI_TASK"
+  },
+  "created_time": 1676629278510
+}

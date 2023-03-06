@@ -1,0 +1,5 @@
+flask # API framework
+flask_rebar # API versioning
+pymongo # Persistence
+pytest # Testing
+mypy # static typing
